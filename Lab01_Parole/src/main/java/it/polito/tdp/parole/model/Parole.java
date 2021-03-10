@@ -11,7 +11,8 @@ public class Parole {
 	
 	public Parole() {
 		
-		//parole=new LinkedList<String>();
+		//SCELGO UNA O L'ALTRA STRUTTURA PER CONFRONTARE LE PRESTAZIONI
+		//parole=new LinkedList<String>(); 
 		parole=new ArrayList<String>();
 		
 	}
