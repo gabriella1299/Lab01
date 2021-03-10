@@ -28,18 +28,51 @@ public class FXMLController {
 
     @FXML
     private TextArea txtResult;
+    
+    @FXML
+    private TextArea txtTime;
 
     @FXML
     private Button btnReset;
 
     @FXML
     void doInsert(ActionEvent event) {
-    	// TODO
+    	
+    	String par=txtParola.getText();
+    	if(!par.matches(".*[0-9].*")) {
+    		elenco.addParola(par);
+    	}
+    	else {
+    		txtResult.setText("Inserire solo caratteri alfabetici");
+    		txtParola.clear();
+    		String time=String.valueOf(System.nanoTime());
+        	txtTime.appendText(time+"\n");
+    		return;
+    	}
+    		
+    	txtResult.setText(elenco.toString());
+    	txtParola.clear();
+    	String time=String.valueOf(System.nanoTime());
+    	txtTime.appendText(time+"\n");
     }
 
     @FXML
     void doReset(ActionEvent event) {
-    	// TODO
+    	elenco.reset();
+    	txtResult.clear();
+    	String time=String.valueOf(System.nanoTime());
+    	txtTime.appendText(time+"\n");
+    }
+    
+    @FXML
+    void doCancella(ActionEvent event) {
+    	String s=txtResult.getSelectedText();
+    	if(elenco.getElenco().contains(s)) {
+    		elenco.removeParola(s);
+    		txtResult.setText(elenco.toString());
+    	}
+    	String time=String.valueOf(System.nanoTime());
+    	txtTime.appendText(time+"\n");
     }
 
     @FXML
