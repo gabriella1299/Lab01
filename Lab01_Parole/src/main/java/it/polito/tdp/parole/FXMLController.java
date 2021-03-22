@@ -55,13 +55,36 @@ public class FXMLController {
     	String time=String.valueOf(System.nanoTime());
     	txtTime.appendText(time+"\n");
     }
+    
+/*  CORREZIONE:
+    void doInsert(ActionEvent event) {
+    	// TODO
+
+    	double start = System.nanoTime();
+    	elenco.addParola(txtParola.getText());
+    	double stop = System.nanoTime();
+
+    	txtResult.clear();
+    	String result = "";
+    	for (String p:elenco.getElenco())
+    		result +=p + "\n";
+    	txtResult.setText(result);
+
+    	txtPerformance.clear();
+    	txtPerformance.setText("[INSERT]: " + (stop - start)/1e9 + " seconds");
+
+
+    	txtParola.clear();
+    }
+  
+ */
 
     @FXML
     void doReset(ActionEvent event) {
     	elenco.reset();
     	txtResult.clear();
     	String time=String.valueOf(System.nanoTime());
-    	txtTime.appendText(time+"\n");
+    	txtTime.appendText(time+"\n"); //CORREZIONE: txtPerformance.clear();
     }
     
     @FXML
@@ -74,7 +97,24 @@ public class FXMLController {
     	String time=String.valueOf(System.nanoTime());
     	txtTime.appendText(time+"\n");
     }
+/*
+ * void doCancella(ActionEvent event) {
 
+    	String selected = txtResult.getSelectedText();
+    	double start = System.nanoTime();
+    	elenco.removeParola(selected);
+    	double stop = System.nanoTime();
+
+    	txtResult.clear();
+    	String result = "";
+    	for (String p:elenco.getElenco())
+    		result +=p + "\n";
+    	txtResult.setText(result);
+
+    	txtPerformance.clear();
+    	txtPerformance.setText("[REMOVE]: " + (stop - start)/1e9 + " seconds");
+	}
+*/
     @FXML
     void initialize() {
         assert txtParola != null : "fx:id=\"txtParola\" was not injected: check your FXML file 'Scene.fxml'.";
